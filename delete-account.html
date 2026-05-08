@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suppression de compte — Zeropann</title>
+  <meta name="description" content="Demandez la suppression de votre compte Zeropann et de vos données personnelles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2563EB;
+      --blue-dark: #1d4ed8;
+      --blue-light: #EFF6FF;
+      --blue-mid: #BFDBFE;
+      --bg: #F8F9FB;
+      --surface: #FFFFFF;
+      --text: #0F172A;
+      --text-secondary: #64748B;
+      --border: #E2E8F0;
+      --warning-bg: #FEF3C7;
+      --warning-border: #FCD34D;
+      --warning-text: #92400E;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 64px;
+      background: rgba(248, 249, 251, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--blue);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--text); }
+
+    nav a.nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a.nav-link:hover { color: var(--blue); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      border: 1px solid var(--blue-mid);
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .lede {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-top: 40px;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    p { margin-bottom: 14px; color: var(--text); }
+
+    ul, ol { margin: 0 0 16px 24px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin: 28px 0;
+      box-shadow: 0 1px 3px rgba(15,23,42,0.04);
+    }
+
+    .card.warning {
+      background: var(--warning-bg);
+      border-color: var(--warning-border);
+      color: var(--warning-text);
+    }
+
+    .card.warning p { color: var(--warning-text); }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .step-body { flex: 1; padding-top: 4px; }
+    .step-body strong { display: block; margin-bottom: 4px; font-weight: 600; }
+    .step-body p { margin-bottom: 0; color: var(--text-secondary); font-size: 15px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      background: var(--blue-dark);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 15px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      main { padding: 40px 20px 64px; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://xuna20012.github.io/zeropann-privacy/" class="logo">Zero<span>pann</span></a>
+    <a href="https://xuna20012.github.io/zeropann-privacy/" class="nav-link">← Politique de confidentialité</a>
+  </nav>
+
+  <main>
+    <span class="hero-badge">RGPD · Droit à l'effacement</span>
+    <h1>Supprimer votre compte Zeropann</h1>
+    <p class="lede">
+      Vous pouvez à tout moment demander la suppression de votre compte Zeropann et de l'ensemble des données personnelles associées. Cette page explique la procédure, les données concernées et les délais.
+    </p>
+
+    <h2>Comment demander la suppression</h2>
+    <p>
+      Envoyez-nous un e-mail à l'adresse ci-dessous depuis l'adresse e-mail (ou en mentionnant le numéro de téléphone) associée à votre compte Zeropann.
+    </p>
+
+    <div class="card">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Préparez votre demande</strong>
+          <p>Indiquez le numéro de téléphone ou l'adresse e-mail de votre compte Zeropann, ainsi que la mention « Suppression de compte » dans l'objet.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Envoyez votre demande</strong>
+          <p>À l'adresse <a href="mailto:support@zeropann.com?subject=Suppression%20de%20compte%20Zeropann&amp;body=Bonjour%2C%0A%0AJe%20demande%20la%20suppression%20de%20mon%20compte%20Zeropann%20et%20de%20toutes%20les%20donn%C3%A9es%20associ%C3%A9es.%0A%0ANum%C3%A9ro%20de%20t%C3%A9l%C3%A9phone%20ou%20e-mail%20du%20compte%20%3A%20%5B%C3%A0%20remplir%5D%0A%0AMerci.">support@zeropann.com</a>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Confirmation par e-mail</strong>
+          <p>Nous accusons réception sous 48h ouvrées et vous demandons une confirmation pour éviter toute suppression accidentelle.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Suppression effective</strong>
+          <p>Sous 30 jours maximum à compter de votre confirmation, votre compte et vos données sont supprimés de nos systèmes.</p>
+        </div>
+      </div>
+      <a href="mailto:support@zeropann.com?subject=Suppression%20de%20compte%20Zeropann&amp;body=Bonjour%2C%0A%0AJe%20demande%20la%20suppression%20de%20mon%20compte%20Zeropann%20et%20de%20toutes%20les%20donn%C3%A9es%20associ%C3%A9es.%0A%0ANum%C3%A9ro%20de%20t%C3%A9l%C3%A9phone%20ou%20e-mail%20du%20compte%20%3A%20%5B%C3%A0%20remplir%5D%0A%0AMerci." class="btn">
+        Envoyer la demande
+      </a>
+    </div>
+
+    <h2>Données supprimées</h2>
+    <p>La suppression entraîne l'effacement définitif de :</p>
+    <ul>
+      <li>Votre profil utilisateur (nom, e-mail, numéro de téléphone)</li>
+      <li>Vos véhicules enregistrés et leurs informations (immatriculation, modèle, kilométrage, photos)</li>
+      <li>L'historique de vos interventions et entretiens</li>
+      <li>Vos rendez-vous passés et à venir</li>
+      <li>Vos préférences et paramètres dans l'application</li>
+      <li>Le jeton de notifications push (FCM) lié à vos appareils</li>
+    </ul>
+
+    <h2>Données conservées et délais</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Type de donnée</th>
+          <th>Durée de conservation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Données du compte (profil, véhicules, historique)</td>
+          <td>Supprimées sous 30 jours</td>
+        </tr>
+        <tr>
+          <td>Sauvegardes de sécurité chiffrées</td>
+          <td>Purgées sous 90 jours</td>
+        </tr>
+        <tr>
+          <td>Données comptables et fiscales (factures éventuelles)</td>
+          <td>Conservées 10 ans (obligation légale)</td>
+        </tr>
+        <tr>
+          <td>Logs techniques anonymisés (sécurité, abus)</td>
+          <td>Conservés 12 mois maximum</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card warning">
+      <p><strong>Attention :</strong> la suppression est définitive et irréversible. Une fois effectuée, vos véhicules et l'historique d'entretien ne pourront pas être restaurés. Pensez à exporter vos données importantes avant de soumettre la demande.</p>
+    </div>
+
+    <h2>Questions ?</h2>
+    <p>
+      Pour toute question relative à la suppression de compte ou à l'exercice de vos droits (accès, rectification, portabilité), contactez-nous à <a href="mailto:support@zeropann.com">support@zeropann.com</a>.
+    </p>
+
+    <p class="meta">
+      Dernière mise à jour : 8 mai 2026 · Document maintenu par Zeropann · Conforme RGPD (UE 2016/679) et exigences Google Play.
+    </p>
+  </main>
+
+  <footer>
+    © 2026 Zeropann · <a href="https://xuna20012.github.io/zeropann-privacy/">Confidentialité</a> · <a href="https://xuna20012.github.io/zeropann-privacy/terms.html">Conditions</a>
+  </footer>
+</body>
+</html>
